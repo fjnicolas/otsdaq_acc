@@ -1,0 +1,95 @@
+link_directories($ENV{XDAQ_LIB})
+
+cet_make_exec(InterfaceTestMain
+  LIBRARIES
+		ConfigurationInterface
+		#DAQHardware
+		FEInterfaces
+		#ConfigurationDataFormats
+        #WorkLoopManager
+        #SupervisorConfigurations
+        #CgiDataUtilities
+        #SOAPUtilities
+	    #FiniteStateMachine
+		$ENV{XDAQ_LIB}/libxdaq.so
+		$ENV{XDAQ_LIB}/libconfig.so
+		$ENV{XDAQ_LIB}/libpeer.so
+		$ENV{XDAQ_LIB}/libtoolbox.so
+		$ENV{XDAQ_LIB}/liblog4cplus.so
+		$ENV{XDAQ_LIB}/libcgicc.so
+		$ENV{XDAQ_LIB}/libxcept.so
+		$ENV{XDAQ_LIB}/libxoap.so
+		$ENV{XDAQ_LIB}/libxdata.so
+		$ENV{XDAQ_LIB}/libxgi.so
+		$ENV{XDAQ_LIB}/liblogudpappender.so
+		$ENV{XDAQ_LIB}/liblogxmlappender.so
+		$ENV{XDAQ_LIB}/libmimetic.so
+		$ENV{XDAQ_LIB}/libasyncresolv
+		$ENV{XDAQ_LIB}/libb2innub.so
+		/usr/lib64/libuuid.so
+
+#$ENV{XDAQ_LIB}/libb2ineventing.so
+#$ENV{XDAQ_LIB}/libb2inutils.so
+#$ENV{XDAQ_LIB}/libb2innub.so
+#$ENV{XDAQ_LIB}/libesapi.so
+#$ENV{XDAQ_LIB}/libesxbeat.so
+#$ENV{XDAQ_LIB}/libesxtreme.so
+#$ENV{XDAQ_LIB}/libeventingapi.so
+#$ENV{XDAQ_LIB}/libeventingcore.so
+#$ENV{XDAQ_LIB}/libeventingduple.so
+#$ENV{XDAQ_LIB}/libexecutive.so
+#$ENV{XDAQ_LIB}/libgevb2g.so
+#$ENV{XDAQ_LIB}/libhyperdaq.so
+#$ENV{XDAQ_LIB}/libi2o.so
+#$ENV{XDAQ_LIB}/libi2outils.a
+#$ENV{XDAQ_LIB}/libjansson.so
+#$ENV{XDAQ_LIB}/libmstreamio2g.so
+#$ENV{XDAQ_LIB}/libptblit.so
+#$ENV{XDAQ_LIB}/libptfifo.so
+#$ENV{XDAQ_LIB}/libpthttp.so
+#$ENV{XDAQ_LIB}/libptibv.so
+#$ENV{XDAQ_LIB}/libpttcp.so
+#$ENV{XDAQ_LIB}/libptudapl.so
+#$ENV{XDAQ_LIB}/libptutcp.so
+#$ENV{XDAQ_LIB}/libroundtrip.so
+#$ENV{XDAQ_LIB}/libsentinelbridge2g.so
+#$ENV{XDAQ_LIB}/libsentinelprobe.so
+#$ENV{XDAQ_LIB}/libsentinelsentineld.so
+#$ENV{XDAQ_LIB}/libsentinel.so
+#$ENV{XDAQ_LIB}/libsentinelspotlight2g.so
+#$ENV{XDAQ_LIB}/libsentineltester.so
+#$ENV{XDAQ_LIB}/libsentinelutils.so
+#$ENV{XDAQ_LIB}/libssh.so
+#$ENV{XDAQ_LIB}/libssh_threads.so
+#$ENV{XDAQ_LIB}/libtcpla.so
+#$ENV{XDAQ_LIB}/libtimeline.so
+#$ENV{XDAQ_LIB}/libtracerd.so
+#$ENV{XDAQ_LIB}/libtracerprobe.so
+#$ENV{XDAQ_LIB}/libwsaddressing.so
+#$ENV{XDAQ_LIB}/libxaccess.so
+#$ENV{XDAQ_LIB}/libxalan-c.so
+#$ENV{XDAQ_LIB}/libxalanMsg.so
+#$ENV{XDAQ_LIB}/libxmasadmin.so
+#$ENV{XDAQ_LIB}/libxmasbridge2g.so
+#$ENV{XDAQ_LIB}/libxmasbroker2g.so
+#$ENV{XDAQ_LIB}/libxmascollector2g.so
+#$ENV{XDAQ_LIB}/libxmasheartbeatheartbeatd.so
+#$ENV{XDAQ_LIB}/libxmasheartbeatprobe.so
+#$ENV{XDAQ_LIB}/libxmasheartbeat.so
+#$ENV{XDAQ_LIB}/libxmaslas2g.so
+#$ENV{XDAQ_LIB}/libxmasprobe.so
+#$ENV{XDAQ_LIB}/libxmassensord.so
+#$ENV{XDAQ_LIB}/libxmasslash2g.so
+#$ENV{XDAQ_LIB}/libxmassmarthub.so
+#$ENV{XDAQ_LIB}/libxmastester.so
+#$ENV{XDAQ_LIB}/libxmasutils.so
+#$ENV{XDAQ_LIB}/libxmemprobe.so
+#$ENV{XDAQ_LIB}/libxoapfilter.so
+#$ENV{XDAQ_LIB}/libxplore.so
+#$ENV{XDAQ_LIB}/libxploreutils.so
+#$ENV{XDAQ_LIB}/libxrelay.so
+#$ENV{XDAQ_LIB}/libxslp.so
+)
+
+install_headers()
+install_source()
