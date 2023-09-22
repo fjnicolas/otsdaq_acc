@@ -20,6 +20,7 @@ class ACCBurstDataSaverConsumer : public RawDataSaverConsumerBase
 	                              const ConfigurationTree& theXDAQContextConfigTree,
 	                              const std::string&       configurationPath);
 	virtual ~ACCBurstDataSaverConsumer(void);
+	virtual void configure(void) override;
 	virtual void openFile(std::string runNumber) override;
 	virtual void closeFile(void) override;
 	virtual void save(const std::string& data) override;
@@ -32,6 +33,7 @@ class ACCBurstDataSaverConsumer : public RawDataSaverConsumerBase
 	std::vector<std::string> acdc_board_ids;
 
 	int lastPacketID_;
+	int packetCount_ ;
 };
 }  // namespace ots
 

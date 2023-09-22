@@ -127,6 +127,7 @@ class FEACCInterface : public FEOtsUDPTemplateInterface
 	static void got_signal(int);
 	void sendJCPLLSPIWord(unsigned int word, unsigned int boardMask = 0xff, bool verbose = false);
 	std::string runNumber_;
+	std::vector<uint64_t> readSlowControl(const int iacdc, const int timeout = 10);
 };
 }  // namespace ots
 
