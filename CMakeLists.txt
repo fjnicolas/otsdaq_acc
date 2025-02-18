@@ -1,78 +1,66 @@
 # ======================================================================
-#  otsdaq-acc main build file
+#  otsdaq-components main build file
 #
 #  cd .../path/to/build/directory
-#  source .../path/to/otsdaq-acc/ups/setup_for_development
+#  source .../path/to/otsdaq-components/ups/setup_for_development
 #  buildtool
 # ======================================================================
 
+
 # use cmake 3.17 or later
-cmake_minimum_required (VERSION 3.17)
+cmake_minimum_required (VERSION 3.19 FATAL_ERROR)
 
-find_package(cetmodules)
-set(CET_CETBUILDTOOLS_COMPAT TRUE)
-include(Compatibility)
-set(CET_WARN_DEPRECATED)
+find_package(cetmodules 3.16.00 REQUIRED)
 
-project(otsdaq-acc VERSION 1.00.00)
-
-set(CMAKE_MODULE_PATH 
-      $ENV{ART_DIR}/Modules
-      $ENV{CETBUILDTOOLS_DIR}/Modules
-      $ENV{XDAQ_DIR}/Modules
-      ${CMAKE_MODULE_PATH}
-)
+project(otsdaq-components VERSION 2.10.00)
 
 include(CetCMakeEnv)
 cet_cmake_env()
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
-cet_set_compiler_flags(DIAGS VIGILANT
-  WERROR
-  NO_UNDEFINED
-  EXTRA_FLAGS -pedantic -Wno-error=class-memaccess -Wno-unused-result -Wno-pessimizing-move -Wno-error=deprecated-copy -Wno-builtin-macro-redefined -Wno-error=format-overflow -Wno-mismatched-new-delete -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-maybe-uninitialized -Wno-ignored-qualifiers -Wno-unused-variable -Wno-deprecated-declarations -Wno-array-bounds -Wno-range-loop-construct
-)
+if (CMAKE_CXX_COMPILER_ID STREQUAL Clang AND
+     CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 14.0.0)
+  # Clang 14 has a bug in which it complains about destructors of template classes
+  # e.g. ArtdaqInput<T>::~ArtdaqInput(), when it is expecting the destructor name to
+  # match what is on the left-hand side of the ::. This is a violation, however, of
+  # the C++20 standard. https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p1787r6.html
+  set(DT_FLAG -Wno-dtor-name)
+else()
+  set(DT_FLAG)
+endif()
+
+cet_set_compiler_flags(
+ DIAGS 
+ VIGILANT
+ WERROR
+ NO_UNDEFINED
+ EXTRA_FLAGS -pedantic -D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES=1 ${DT_FLAG}
+ )
  
-cet_remove_compiler_flags(-std=c++98)
-#cet_report_compiler_flags()
-
-# these are minimum required versions, not the actual product versions
-find_ups_product( TRACE v3_17_00 )
-find_ups_product( cetbuildtools v3_03_00 )
-find_ups_product( artdaq v0_04_02 )
-find_ups_product( artdaq_core v1_00_00 )
-find_ups_product( artdaq_utilities v1_00_00 )
-find_ups_product( art v1_06_00 )
-find_ups_product( fhiclcpp v2_16_00 )
-find_ups_product( messagefacility v1_10_00 )
-find_ups_product( cetlib v1_03_00 )
-find_ups_product( otsdaq v1_00_00 )
-find_ups_product( otsdaq_utilities v1_00_00 )
-
+find_package(otsdaq 2.06.06 REQUIRED EXPORT)
+ 
  # XDAQ Extra setup
-find_ups_product( xdaq v16_7_0_1)
-include_directories($ENV{XDAQ_INC}/linux)
-link_directories($ENV{XDAQ_LIB})
+ include_directories($ENV{XDAQ_ROOT}/include/linux $ENV{XDAQ_ROOT}/include)
+link_directories($ENV{XDAQ_ROOT}/lib)
 link_directories($ENV{ARTDAQ_DATABASE_LIB})
-set(XDAQ_BASIC_LIB_LIST 
-    xcept
-    xoap
-    xdaq
-    toolbox
-    xerces-c
-    cgicc
-)
+ set(XDAQ_BASIC_LIB_LIST 
+   xcept
+   xoap
+   xdaq
+   toolbox
+   xerces-c
+   cgicc
+ )
+ set(XDAQ_XERCES-C xerces-c)
 
-set(XDAQ_XERCES-C xerces-c)
-
-find_package(MPI QUIET)
-
-# macros for art_dictionary and simple_plugin
-include(ArtMake)
-include(BuildPlugins)
-include(CetTest)
+ include(BuildPlugins)
 
 # Code
 add_subdirectory(otsdaq-acc)
 
-# packaging utility
-include(UseCPack)
+# doxygen
+if( $ENV{OTS_DOXY} MATCHES "DOIT" )
+	add_subdirectory(doc)
+endif()
+
+cet_cmake_config()
