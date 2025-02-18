@@ -4,6 +4,7 @@ SOURCE ACDC.cc Metadata.cc
     PUBLIC
     otsdaq::MessageFacility
     otsdaq::ConfigurationInterface
+    otsdaq-components::FEOtsUDPProducerInterface
 )
 
 #cet_make(LIBRARY_NAME ACC
