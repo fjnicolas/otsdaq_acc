@@ -1,7 +1,2 @@
-basic_plugin(FEACCInterface "interface"
-    LIBRARIES REG 
-    otsdaq_components::FEOtsUDPTemplateInterface
-    ACC
-    ${CETLIB}
-    ${CETLIB_EXCEPT}
-)
+include(otsdaq::interface)
+cet_build_plugin(FEACCInterface otsdaq::interface	LIBRARIES REG)
