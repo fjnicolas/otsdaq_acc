@@ -1,6 +1,5 @@
 cet_make_library(LIBRARY_NAME ACC
   SOURCE ACDC.cc Metadata.cc
- ￼LIBRARIES
   PUBLIC
   otsdaq::MessageFacility
 )
