@@ -1,5 +1,5 @@
 cet_make_library(LIBRARY_NAME ACC
-#  SOURCE DAQHardwareBase.cc OtsUDPFirmwareCore.cc OtsUDPFirmwareDataGen.cc OtsUDPHardware.cc
+  SOURCE FEACCInterface_interface.cc
  ￼LIBRARIES
   PUBLIC
   otsdaq::MessageFacility
