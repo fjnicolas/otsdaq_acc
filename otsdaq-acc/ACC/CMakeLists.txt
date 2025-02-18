@@ -1,3 +1,5 @@
+include(otsdaq::FEInterface)
+
 cet_make_library(LIBRARY_NAME ACC
 SOURCE ACDC.cc Metadata.cc
     LIBRARIES
