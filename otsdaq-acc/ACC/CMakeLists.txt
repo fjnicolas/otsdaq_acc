@@ -3,7 +3,7 @@ SOURCE ACDC.cc Metadata.cc
     LIBRARIES
     PUBLIC
     otsdaq::MessageFacility
-    otsdaq::Utilities  
+    otsdaq::configInterface
 )
 
 #cet_make(LIBRARY_NAME ACC
