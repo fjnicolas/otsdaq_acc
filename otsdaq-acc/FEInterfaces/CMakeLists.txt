@@ -1,2 +1,2 @@
-include(otsdaq::interface)
-cet_build_plugin(FEACCInterface otsdaq::interface	LIBRARIES REG)
+include(otsdaq:FEInterface)
+cet_build_plugin(FEACCInterface otsdaq::FEInterface	LIBRARIES REG)
