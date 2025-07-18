@@ -38,7 +38,7 @@ cet_set_compiler_flags(
  )
  
 find_package(otsdaq REQUIRED EXPORT)
-find_package(otsdaq_components REQUIRED EXPORT)
+find_package(otsdaq_components 3.00.00 REQUIRED EXPORT)
 
 # XDAQ Extra setup
 include_directories($ENV{XDAQ_ROOT}/include/linux $ENV{XDAQ_ROOT}/include)
