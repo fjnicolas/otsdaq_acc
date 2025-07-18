@@ -1,4 +1,5 @@
 #include "ACDC.h"
+c
 #include "otsdaq/ConfigurationInterface/ConfigurationTree.h"
 
 #include <bitset>
@@ -11,7 +12,6 @@
 
 using namespace std;
 
-x
 
 ACDC::ACDC() : boardIndex(-1), nEvents_(0) {}
 
