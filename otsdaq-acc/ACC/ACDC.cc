@@ -1,5 +1,4 @@
 #include "ACDC.h"
-c
 #include "otsdaq/ConfigurationInterface/ConfigurationTree.h"
 
 #include <bitset>
