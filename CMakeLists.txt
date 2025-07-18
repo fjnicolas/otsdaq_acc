@@ -10,7 +10,7 @@
 # use cmake 3.17 or later
 cmake_minimum_required (VERSION 3.19 FATAL_ERROR)
 
-find_package(cetmodules 3.16.00 REQUIRED)
+find_package(cetmodules 3.27.02 REQUIRED)
 
 project(otsdaq-acc VERSION 1.00.00)
 
