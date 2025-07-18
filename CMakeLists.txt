@@ -37,8 +37,8 @@ cet_set_compiler_flags(
  EXTRA_FLAGS -pedantic -D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES=1 ${DT_FLAG}
  )
  
-#find_package(otsdaq 3.02.00 REQUIRED EXPORT)
-#find_package(otsdaq_components 3.00.00 REQUIRED EXPORT)
+find_package(otsdaq 3.02.00 REQUIRED EXPORT)
+find_package(otsdaq_components 3.00.00 REQUIRED EXPORT)
 
 # XDAQ Extra setup
 include_directories($ENV{XDAQ_ROOT}/include/linux $ENV{XDAQ_ROOT}/include)
