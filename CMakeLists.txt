@@ -36,7 +36,9 @@ cet_set_compiler_flags(
  NO_UNDEFINED
  #EXTRA_FLAGS -pedantic -D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES=1 ${DT_FLAG}
  )
- 
+
+set(CMAKE_CXX_STANDARD 20)
+
 find_package(otsdaq 3.02.00 REQUIRED EXPORT)
 find_package(otsdaq-components 3.00.00 REQUIRED EXPORT)
 
